@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="riskLog2" format="json">
+      <types:shape format="weave" example="examples/exampleRiskLog2.json"><![CDATA[%dw 2.0
+
+type riskLog2 = Array<{|  riskType: String,   riskLevel: String,   riskLikelihood: String,   monetaryCostOfRisk: String,   associatedEmployeeId: String,   remediationTimeline: String,   riskArea: String,   id: String|}> {"example": "[{\\\"riskType\\\":\\\"Home\\\",\\\"riskLevel\\\":\\\"sky blue\\\",\\\"riskLikelihood\\\":\\\"unde provident ex\\\",\\\"monetaryCostOfRisk\\\":\\\"980.48\\\",\\\"associatedEmployeeId\\\":\\\"76180-1028\\\",\\\"remediationTimeline\\\":\\\"August\\\",\\\"riskArea\\\":\\\"Games\\\",\\\"id\\\":\\\"1\\\"},{\\\"riskType\\\":\\\"Clothing\\\",\\\"riskLevel\\\":\\\"pink\\\",\\\"riskLikelihood\\\":\\\"Itaque hic dignissimos quod debitis consequatur dolor labore.\\\",\\\"monetaryCostOfRisk\\\":\\\"191.23\\\",\\\"associatedEmployeeId\\\":\\\"44116\\\",\\\"remediationTimeline\\\":\\\"August\\\",\\\"riskArea\\\":\\\"Toys\\\",\\\"id\\\":\\\"2\\\"}]"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="riskLog1" format="json">
+      <types:shape format="weave" example="examples/exampleRiskLog.json"><![CDATA[%dw 2.0
+
+type riskLog1 = Array<{|  cost: String,   likelihood: String,   "type": String,   employeeId: String,   area: String,   timeline: String,   level: String,   id: String|}> {"example": "[{\\\"cost\\\":\\\"857.08\\\",\\\"likelihood\\\":\\\"est provident ut\\\",\\\"type\\\":\\\"Home\\\",\\\"employeeId\\\":\\\"58393-6451\\\",\\\"area\\\":\\\"Clothing\\\",\\\"timeline\\\":\\\"October\\\",\\\"level\\\":\\\"debitis error tempora\\\",\\\"id\\\":\\\"1\\\"},{\\\"cost\\\":\\\"857.08\\\",\\\"likelihood\\\":\\\"est provident ut\\\",\\\"type\\\":\\\"Home\\\",\\\"employeeId\\\":\\\"58393-6451\\\",\\\"area\\\":\\\"Clothing\\\",\\\"timeline\\\":\\\"October\\\",\\\"level\\\":\\\"debitis error tempora\\\",\\\"id\\\":\\\"1\\\"}]"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="exampleAccount" format="json">
+      <types:shape format="weave" example="examples/exampleAccount.json"><![CDATA[%dw 2.0
+
+type exampleAccount = Array<{|  accountName: String,   website: String,   phone: String,   accountType: String,   accountId: String,   id: String,   street: String,   city: String,   state: String,   zipCode: String,   country: String|}> {"example": "[{\\\"accountName\\\":\\\"Cleveland Clinic\\\",\\\"website\\\":\\\"clevelandclinic.com\\\",\\\"phone\\\":\\\"123-456-7890\\\",\\\"accountType\\\":\\\"Installation Partner\\\",\\\"accountId\\\":\\\"0015e00000L781rAAB\\\",\\\"id\\\":\\\"0015e00000L781rAAB\\\",\\\"street\\\":\\\"333 Helpful Highway\\\",\\\"city\\\":\\\"Raleigh\\\",\\\"state\\\":\\\"NC\\\",\\\"zipCode\\\":\\\"22839\\\",\\\"country\\\":\\\"USA\\\"},{\\\"accountName\\\":\\\"Pittsburgh Pirates\\\",\\\"website\\\":\\\"pirates.com\\\",\\\"phone\\\":\\\"\\\",\\\"accountType\\\":\\\"Prospect\\\",\\\"accountId\\\":\\\"0015e00000ulCaTAAU\\\",\\\"id\\\":\\\"0015e00000ulCaTAAU\\\",\\\"street\\\":\\\"123 Wavy Way\\\",\\\"city\\\":\\\"Pittsburgh\\\",\\\"state\\\":\\\"PA\\\",\\\"zipCode\\\":\\\"33930\\\",\\\"country\\\":\\\"USA\\\"},{\\\"accountName\\\":\\\"Children's Hospital of Pennsylvania\\\",\\\"website\\\":\\\"chop.com\\\",\\\"phone\\\":\\\"111-111-1234\\\",\\\"accountType\\\":\\\"Customer - Channel\\\",\\\"accountId\\\":\\\"0015e00000L781nAAB\\\",\\\"id\\\":\\\"0015e00000L781nAAB\\\",\\\"street\\\":\\\"909 Rightside Road\\\",\\\"city\\\":\\\"Philadelphia\\\",\\\"state\\\":\\\"PA\\\",\\\"zipCode\\\":\\\"33456\\\",\\\"country\\\":\\\"USA\\\"},{\\\"accountName\\\":\\\"Mass General Hospital\\\",\\\"website\\\":\\\"massgeneral.com\\\",\\\"phone\\\":\\\"994-949-9096\\\",\\\"accountType\\\":\\\"Customer - Channel\\\",\\\"accountId\\\":\\\"0015e00000L7815AAB\\\",\\\"id\\\":\\\"0015e00000L7815AAB\\\",\\\"street\\\":\\\"445 Penny Lane\\\",\\\"city\\\":\\\"Boston\\\",\\\"state\\\":\\\"MA\\\",\\\"zipCode\\\":\\\"33920\\\",\\\"country\\\":\\\"USA\\\"},{\\\"accountName\\\":\\\"Johns Hopkins Hospital\\\",\\\"website\\\":\\\"johnshopkins.edu\\\",\\\"phone\\\":\\\"999-909-8867\\\",\\\"accountType\\\":\\\"Installation Partner\\\",\\\"accountId\\\":\\\"0015e00000L7816AAB\\\",\\\"id\\\":\\\"0015e00000L7816AAB\\\",\\\"street\\\":\\\"444 Cal Ripken Way\\\",\\\"city\\\":\\\"Baltimore\\\",\\\"state\\\":\\\"MD\\\",\\\"zipCode\\\":\\\"48909\\\",\\\"country\\\":\\\"USA\\\"}]"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="exampleAccountReceive" format="json">
+      <types:shape format="weave" example="examples/exampleAccountReceive.json"><![CDATA[%dw 2.0
+
+type exampleAccountReceive = Array<{|  Account: String,   Street_Address: String,   City: String,   State: String,   PostalCode: String,   Country: String,   Account_Type: String,   Website: String,   Phone_Number: String,   Account_ID: String,   Identification: String|}> {"example": "[{\\\"Account\\\":\\\"Cleveland Clinic\\\",\\\"Street_Address\\\":\\\"333 Helpful Highway\\\",\\\"City\\\":\\\"Raleigh\\\",\\\"State\\\":\\\"NC\\\",\\\"PostalCode\\\":\\\"22839\\\",\\\"Country\\\":\\\"USA\\\",\\\"Account_Type\\\":\\\"Installation Partner\\\",\\\"Website\\\":\\\"clevelandclinic.com\\\",\\\"Phone_Number\\\":\\\"123-456-7890\\\",\\\"Account_ID\\\":\\\"0015e00000L781rAAB\\\",\\\"Identification\\\":\\\"0015e00000L781rAAB\\\"}]"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#8fd52c0c-ab56-482c-b815-4f4b65ed0125">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="exampleAccount"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="exampleAccountReceive"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

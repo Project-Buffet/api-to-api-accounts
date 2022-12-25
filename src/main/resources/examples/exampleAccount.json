@@ -1,0 +1,67 @@
+[
+ {
+  "accountName": "Cleveland Clinic",
+  "website": "clevelandclinic.com",
+  "phone": "123-456-7890",
+  "accountType": "Installation Partner",
+  "accountId": "0015e00000L781rAAB",
+  "id": "0015e00000L781rAAB",
+  "street": "333 Helpful Highway",
+  "city": "Raleigh",
+  "state": "NC",
+  "zipCode": "22839",
+  "country": "USA"
+ },
+ {
+  "accountName": "Pittsburgh Pirates",
+  "website": "pirates.com",
+  "phone": "",
+  "accountType": "Prospect",
+  "accountId": "0015e00000ulCaTAAU",
+  "id": "0015e00000ulCaTAAU",
+  "street": "123 Wavy Way",
+  "city": "Pittsburgh",
+  "state": "PA",
+  "zipCode": "33930",
+  "country": "USA"
+ },
+ {
+  "accountName": "Children's Hospital of Pennsylvania",
+  "website": "chop.com",
+  "phone": "111-111-1234",
+  "accountType": "Customer - Channel",
+  "accountId": "0015e00000L781nAAB",
+  "id": "0015e00000L781nAAB",
+  "street": "909 Rightside Road",
+  "city": "Philadelphia",
+  "state": "PA",
+  "zipCode": "33456",
+  "country": "USA"
+ },
+ {
+  "accountName": "Mass General Hospital",
+  "website": "massgeneral.com",
+  "phone": "994-949-9096",
+  "accountType": "Customer - Channel",
+  "accountId": "0015e00000L7815AAB",
+  "id": "0015e00000L7815AAB",
+  "street": "445 Penny Lane",
+  "city": "Boston",
+  "state": "MA",
+  "zipCode": "33920",
+  "country": "USA"
+ },
+ {
+  "accountName": "Johns Hopkins Hospital",
+  "website": "johnshopkins.edu",
+  "phone": "999-909-8867",
+  "accountType": "Installation Partner",
+  "accountId": "0015e00000L7816AAB",
+  "id": "0015e00000L7816AAB",
+  "street": "444 Cal Ripken Way",
+  "city": "Baltimore",
+  "state": "MD",
+  "zipCode": "48909",
+  "country": "USA"
+ }
+]

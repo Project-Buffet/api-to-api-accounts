@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:snowflake="http://www.mulesoft.org/schema/mule/snowflake"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:bti="http://www.mulesoft.org/schema/mule/ee/bti" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/bti http://www.mulesoft.org/schema/mule/ee/bti/current/mule-bti-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/snowflake http://www.mulesoft.org/schema/mule/snowflake/current/mule-snowflake.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="eaf2b1f4-1bb7-4c44-be51-e515003822db" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="668814e3-7a12-43c1-8672-51e04389ef79" >
+		<http:request-connection host="6272b26225fed8fcb5f87368.mockapi.io" protocol="HTTPS"/>
+	</http:request-config>
+	<http:request-config name="Destination-HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="7603b180-352e-4918-8700-35d17b9b5747" >
+		<http:request-connection protocol="HTTPS" host="62e80949249bb1284ea7a142.mockapi.io" />
+	</http:request-config>
+	<flow name="api-to-api-accounts-example-flow" doc:id="8341cbbb-22fd-44bd-9abb-3b50a5b91dd6" >
+		<http:listener doc:name="Listener" doc:id="069c286c-4ca3-4771-91b0-1767c0236f63" config-ref="HTTP_Listener_config" path="/moveAccounts"/>
+		<http:request method="GET" doc:name="GET Data from REST API" doc:id="a6abced7-1a9c-4aa1-b044-49399ffc1650" config-ref="HTTP_Request_configuration" path="/accounts" />
+		<ee:transform doc:name="Transform JSON to Java" doc:id="8fd52c0c-ab56-482c-b815-4f4b65ed0125">
+			<ee:message>
+				<ee:set-payload><![CDATA[output application/json
+---
+payload map ( payload01 , indexOfPayload01 ) -> {
+	Account: payload01.accountName,
+	Street_Address: payload01.street,
+	City: payload01.city,
+	State: payload01.state,
+	PostalCode: payload01.zipCode,
+	Country: payload01.country,
+	Account_Type: payload01.accountType,
+	Website: payload01.website,
+	Phone_Number: payload01.phone,
+	Account_ID: payload01.accountId,
+	Identification: payload01.id
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<http:request method="POST" doc:name="POST Data to Destination API" doc:id="ab4cef44-0d03-4e9d-baf2-b0ac2872b394" config-ref="Destination-HTTP_Request_configuration" path="/accounts2" />
+		<ee:transform doc:name="Transform Message" doc:id="52fda3f3-e928-4e7c-9c92-1aeb1b2070c7" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[output application/json
+---
+{
+	"Result": if (attributes.statusCode == 201) ("Success") else ("Failure")
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
